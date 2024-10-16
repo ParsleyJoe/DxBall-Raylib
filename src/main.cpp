@@ -11,6 +11,7 @@ std::vector<int> boxGrid = {
 		1, 1, 1, 1, 1, 1, 1
 };
 int score = 0;
+int lives = 5;
 
 // Player Paddle so paddle ?
 class paddle
@@ -117,6 +118,7 @@ public:
 
 		speedX += GetRandomValue(xDir[0], xDir[1]);
 		speedY += GetRandomValue(yDir[0], xDir[1]);
+		lives--;
 	}
 };
 Ball ball;
@@ -127,6 +129,14 @@ void DrawScore()
 	float posY = 20;
 
 	DrawText(TextFormat("Score: %i", score), posX, posY, 40, RAYWHITE);
+}
+
+void DrawLives()
+{
+	float posX = GetScreenWidth() - 180;
+	float posY = 20;
+
+	DrawText(TextFormat("Lives: %i", lives), posX, posY, 40, RAYWHITE);
 }
 
 // Checks Collisions too
@@ -175,8 +185,8 @@ int main ()
 	ball.x = screen_width / 2;
 	ball.y = screen_height / 2;
 	ball.radius = 15;
-	ball.speedX = 7;
-	ball.speedY = 7;
+	ball.speedX = 5;
+	ball.speedY = 5;
 	// Tell the window to use vysnc and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
@@ -203,6 +213,7 @@ int main ()
 		ball.Draw();
 		DrawScore();
 		DrawBoxes();
+		DrawLives();
 		// end the frame and get ready for the next one  (display frame, poll input, etc...)
 		EndDrawing();
 	}
