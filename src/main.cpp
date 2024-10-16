@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "raygui.h"
 #include "raylib.h"
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 
