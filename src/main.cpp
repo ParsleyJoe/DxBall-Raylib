@@ -126,7 +126,7 @@ void DrawScore()
 	float posX = 40;
 	float posY = 20;
 
-	DrawText("Score: ", posX, posY, 40, RAYWHITE);
+	DrawText(TextFormat("Score: %i", score), posX, posY, 40, RAYWHITE);
 }
 
 // Checks Collisions too
@@ -151,6 +151,7 @@ void DrawBoxes()
 		{
 			boxGrid[i] = 0;
 			ball.speedY *= -1;
+			score += 30; // Increase Score by 30 every time a box is destroyed
 		}
 		posX += rectWidth + 5;
 		if (posX + rectWidth >= rightOffset)
