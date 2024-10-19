@@ -50,7 +50,7 @@ void Ball::Draw()
 }
 void Ball::Move()
 {
-	if (moving)
+	if (moving && active)
 	{
 		x += speedX;
 		y += speedY;
@@ -101,6 +101,11 @@ void Ball::ResetBall()
 	speedX += GetRandomValue(xDir[0], xDir[1]);
 	speedY += GetRandomValue(yDir[0], xDir[1]);
 	lives--;
+
+	if (lives <= 0)
+	{
+		active = false;
+	}
 }
 
 void DrawScore(int score)
@@ -148,4 +153,11 @@ void DrawBoxes(std::vector<int> &boxGrid)
 			posY += rectHeight + 20;
 		}
 	}
+}
+
+void GameOver()
+{
+	int posX = (GetScreenWidth() / 2) - 40;
+	int posY = GetScreenWidth() / 2;
+	DrawText("Game Over!", posX, posY, 40, RAYWHITE);
 }

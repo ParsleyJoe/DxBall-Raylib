@@ -60,6 +60,10 @@ int main ()
 		DrawScore(score);
 		DrawBoxes(boxGrid);
 		DrawLives(lives);
+		if (lives <= 0)
+		{
+			GameOver();
+		}
 		// end the frame and get ready for the next one  (display frame, poll input, etc...)
 		EndDrawing();
 	}

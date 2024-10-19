@@ -23,6 +23,7 @@ public:
 	float speedY;
 	float timeStopped;
 	bool moving = true;
+	bool active = true;
 	
 	Ball::Ball();
 	void Draw();
@@ -35,3 +36,4 @@ public:
 void DrawScore(int score);
 void DrawBoxes(std::vector<int> &boxGrid);
 void DrawLives(int lives);
+void GameOver();
