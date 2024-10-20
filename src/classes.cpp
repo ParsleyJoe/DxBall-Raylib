@@ -5,10 +5,11 @@ extern int lives;
 extern int score;
 extern paddle player;
 extern Ball ball;
+extern Scenes currentScene;
 
 void paddle::Draw()
 {
-	DrawRectangle(x, y, width, height, RAYWHITE);
+	DrawRectangle(static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height), RAYWHITE);
 }
 void paddle::Move()
 {
@@ -85,7 +86,7 @@ void Ball::LimitMovement()
 	}
 
 	// Collision
-	if (CheckCollisionCircleRec(Vector2{ x, y }, radius, Rectangle{ player.x, player.y, player.width, player.height }))
+	if (CheckCollisionCircleRec(Vector2{ static_cast<float>(x), static_cast<float>(y) }, radius, Rectangle{ player.x, player.y, player.width, player.height }))
 	{
 		speedY *= -1;
 	}
@@ -140,7 +141,7 @@ void DrawBoxes(std::vector<int> &boxGrid)
 			DrawRectangle(posX, posY, rectWidth, rectHeight, RAYWHITE);
 		}
 
-		if (CheckCollisionCircleRec(Vector2{ ball.x, ball.y }, ball.radius, Rectangle{ posX, posY, rectWidth, rectHeight }) && boxGrid[i] == 1)
+		if (CheckCollisionCircleRec(Vector2{ static_cast<float>(ball.x), static_cast<float>(ball.y) }, ball.radius, Rectangle{ posX, posY, rectWidth, rectHeight }) && boxGrid[i] == 1)
 		{
 			boxGrid[i] = 0;
 			ball.speedY *= -1;
@@ -160,4 +161,16 @@ void GameOver()
 	int posX = (GetScreenWidth() / 2) - 40;
 	int posY = GetScreenWidth() / 2;
 	DrawText("Game Over!", posX, posY, 40, RAYWHITE);
+}
+
+void MainMenu()
+{
+	int posX = (GetScreenWidth() / 2) - 200;
+	int posY = GetScreenWidth() / 2;
+	DrawText("Press Enter To Start Game", posX, posY, 40, RAYWHITE);
+
+	if (IsKeyDown(KEY_ENTER))
+	{
+		currentScene = Game;
+	}
 }

@@ -6,7 +6,7 @@ class paddle
 public:
 	float x, y;
 	float width, height;
-	float speed;
+	int speed;
 
 	void Draw();
 	void Move();
@@ -17,7 +17,7 @@ public:
 class Ball
 {
 public:
-	float x, y;
+	int x, y;
 	int radius;
 	float speedX;
 	float speedY;
@@ -31,9 +31,13 @@ public:
 	void LimitMovement();
 	void ResetBall();
 };
+enum Scenes {
+	Main, Game
+};
 
 
 void DrawScore(int score);
 void DrawBoxes(std::vector<int> &boxGrid);
 void DrawLives(int lives);
 void GameOver();
+void MainMenu();

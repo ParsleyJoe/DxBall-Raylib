@@ -6,9 +6,8 @@
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 #include "classes.hpp"
 
-enum Scenes {
-	Main, Game, gameOver
-};
+
+Scenes currentScene = Main;
 int lives = 5; // Lives
 int score = 0; // Score
 paddle player;
@@ -49,8 +48,11 @@ int main ()
 		BeginDrawing();
 
 		// Update
-		player.Move();
-		ball.Move();
+		if (currentScene == Game)
+		{
+			player.Move();
+			ball.Move();
+		}
 		// Setup the backbuffer for drawing (clear color and depth buffers)
 		ClearBackground(DARKGRAY);
 		
@@ -60,6 +62,10 @@ int main ()
 		DrawScore(score);
 		DrawBoxes(boxGrid);
 		DrawLives(lives);
+		if (currentScene == Main)
+		{
+			MainMenu();
+		}
 		if (lives <= 0)
 		{
 			GameOver();
