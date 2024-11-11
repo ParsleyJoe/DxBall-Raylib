@@ -1,13 +1,13 @@
 #include <iostream>
 #include <vector>
-#define RAYGUI_IMPLEMENTATION
+#define RAYGUI_IMPLEMENTATION	// Thinking of adding Main Menu 
 #include "raygui.h"
 #include "raylib.h"
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 #include "classes.hpp"
 
 
-Scenes currentScene = Main;
+Scenes currentScene = Main;	// Wanted to add Scenes , maybe in Future
 int lives = 5; // Lives
 int score = 0; // Score
 paddle player;
