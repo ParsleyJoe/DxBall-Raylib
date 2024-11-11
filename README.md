@@ -1,8 +1,6 @@
 Used raylib's quick start to make this
 
-
-# Apparently we can't move this liscence
-
+Apparently we can't move this liscence
 # License
 Copyright (c) 2020-2024 Jeffery Myers
 
